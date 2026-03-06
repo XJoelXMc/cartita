@@ -1,0 +1,219 @@
+/* ========================= */
+/* FUENTES */
+/* ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Playfair+Display&display=swap');
+
+/* ========================= */
+/* ESTILOS GENERALES */
+/* ========================= */
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    /* fondo romántico suave */
+    background: linear-gradient(135deg, #f3d9d9, #f7e6d5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* contenedor */
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+/* ========================= */
+/* CARTA VINTAGE */
+/* ========================= */
+.card {
+    /* color papel antiguo */
+    background: linear-gradient(to bottom, #fdf6e3, #f7ecd2);
+    padding: 35px;
+    border-radius: 8px;
+    /* borde tipo hoja */
+    border: 1px solid #e2cfa8;
+    /* sombra profunda */
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.25),
+        inset 0 0 40px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+/* efecto de hoja vieja */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+}
+
+/* moños decorativos */
+.card::after {
+    content: "🎀";
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+    font-size: 40px;
+}
+
+/* titulo */
+.title {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    color: #8b3a3a;
+    margin-bottom: 15px;
+}
+
+/* ========================= */
+/* TEXTO DE CARTA */
+/* ========================= */
+.letter {
+    font-family: 'Dancing Script', cursive;
+    font-size: 19px;
+    line-height: 1.9;
+    margin-top: 10px;
+    height: 260px;
+    overflow-y: auto;
+    color: #3b2b2b;
+    text-align: justify;
+    padding-right: 12px;
+    /* borde lateral tipo carta */
+    border-left: 3px solid rgba(150,90,60,0.2);
+    padding-left: 14px;
+}
+
+/* scrollbar elegante */
+.letter::-webkit-scrollbar {
+    width: 6px;
+}
+
+.letter::-webkit-scrollbar-thumb {
+    background: #d2b48c;
+    border-radius: 4px;
+}
+
+/* ========================= */
+/* CARRUSEL ROMÁNTICO */
+/* ========================= */
+.carousel {
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+    height: 280px; 
+    border-radius: 4px; 
+    overflow: hidden;
+    /* Fondo romántico para rellenar espacios de imágenes de distintos tamaños */
+    background: linear-gradient(135deg, #f5e3e3, #ebd1d1); 
+    /* Estilo de marco de fotografía antigua (tipo Polaroid) */
+    border: 8px solid #fdfbf7; 
+    border-bottom: 32px solid #fdfbf7; 
+    /* Sombra suave */
+    box-shadow: 
+        0 12px 20px rgba(0,0,0,0.15),
+        inset 0 0 15px rgba(139, 58, 58, 0.08);
+}
+
+/* Textura punteada muy fina para el fondo del carrusel */
+.carousel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(139, 58, 58, 0.06) 1px, transparent 1px);
+    background-size: 8px 8px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Imágenes */
+.carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* contain adapta la imagen completa sin recortarla */
+    object-fit: contain; 
+    filter: drop-shadow(0px 5px 8px rgba(0,0,0,0.15));
+    opacity: 0;
+    z-index: 1;
+    /* Transición de opacidad y pequeño zoom */
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+    transform: scale(0.96); 
+}
+
+/* Imagen activa */
+.carousel img.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+/* ========================= */
+/* MENSAJE FINAL */
+/* ========================= */
+.mensaje {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    margin-top: 15px;
+    text-align: center;
+    color: #8b3a3a;
+}
+
+/* ========================= */
+/* PANTALLA DE INICIO (BOTÓN) */
+/* ========================= */
+.start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    cursor: pointer;
+    transition: all 0.8s ease;
+}
+
+.start.hide {
+    opacity: 0;
+    transform: scale(0.7);
+    pointer-events: none;
+    /* Ocultar completamente para que no estorbe los clics en la carta */
+    display: none; 
+}
+
+/* corazón grande central */
+.big-heart {
+    font-size: 80px;
+    animation: latido 1.2s infinite;
+}
+
+/* texto apretame */
+.tap {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    margin-top: 10px;
+    color: #8b3a3a;
+    animation: parpadeo 1.5s infinite;
+}
+
+/* ========================= */
+/* ANIMACIONES */
+/* ========================= */
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
